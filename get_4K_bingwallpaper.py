@@ -3,7 +3,6 @@ from lxml import etree
 import datetime
 
 
-# 爬取今日壁纸
 url = "https://www.bingimg.cn"
 res = requests.get(url).text
 html_file = etree.HTML(res)
