@@ -9,7 +9,6 @@ html_file = etree.HTML(res)
 div_list = html_file.xpath('//*[@id="a_img_down_uhd"]')
 v_list = []
 for index in range(len(div_list)):
-    # links[index]返回的是一个字典
     if (index % 2) == 0:
         scorces = div_list[index].attrib
         
@@ -36,12 +35,12 @@ print(pic.status_code)
 
 dir_name = r"C:\Users\Ashuai\AppData\Local\Microsoft\BingWallpaperApp\WPImages"  #这里需要替换您自己的bing壁纸软件的图片存放目录
 
-# 设置文件名
+# 根据日期得到文件名
 today = datetime.date.today()
 today = str(today)
 name = "\\" + today[0:4] + today[5:7] + today[8:] + ".jpg"
 
 file_name = dir_name + name  # 文件储存地址
-with open(file_name, 'wb') as f:  # 把图片数据写入本地，wb表示二进制储存
+with open(file_name, 'wb') as f:
     for chunk in pic.iter_content(chunk_size=128):
         f.write(chunk)
